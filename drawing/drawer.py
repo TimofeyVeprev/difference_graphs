@@ -62,7 +62,7 @@ class Drawer(Graph):
         # Отрисовка, без подписи данных графиков
         self.draw_graph(chart_caption=False)
 
-    def draw_one_line(self, data_x) -> None:
+    def draw_one_line_xy(self, data_x, data_y) -> None:
         """ Отрисовка линии.
         :param data_x: данные x.
         :param data_y: данные y."""
@@ -70,7 +70,7 @@ class Drawer(Graph):
         self.cleaning_and_chart_graph()
 
         # Рисуем график
-        self.axis.plot(data_x)
+        self.axis.plot(data_x, data_y)
 
         # Отрисовка (вызывается в конце)
         self.draw_graph()

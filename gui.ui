@@ -6,36 +6,82 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
-    <height>418</height>
+    <width>788</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="button_with_gas">
      <property name="text">
-      <string>Нажмите на кнопку</string>
+      <string>Добавить данные с газом</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="button_without_gas">
+     <property name="text">
+      <string>Добавить данные без газа</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QWidget" name="widget_plot_1" native="true">
      <layout class="QVBoxLayout" name="layout_plot_1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
       <property name="bottomMargin">
-       <number>11</number>
+       <number>0</number>
       </property>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="QWidget" name="widget_plot_2" native="true">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <layout class="QVBoxLayout" name="layout_plot_2"/>
-      </item>
+     <layout class="QVBoxLayout" name="layout_plot_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
      </layout>
     </widget>
    </item>

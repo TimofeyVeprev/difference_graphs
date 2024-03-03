@@ -1,7 +1,7 @@
 import matplotlib
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
-
+from PyQt5 import QtWidgets, QtCore
 from gui import Ui_Dialog
 from drawing.drawer import Drawer as drawer
 
@@ -13,10 +13,13 @@ class GuiProgram(Ui_Dialog):
 
     def __init__(self, dialog: QtWidgets.QDialog) -> None:
         """ Вызывается при создании нового объекта класса """
-        # Создание окна
         Ui_Dialog.__init__(self)
-        # Установка пользовательского интерфейс
-
+        dialog.setWindowFlags(  # Передаем флаги создания окна
+            QtCore.Qt.WindowCloseButtonHint |  # Кнопка закрытия
+            QtCore.Qt.WindowMaximizeButtonHint |  # Кнопка развернуть
+            QtCore.Qt.WindowMinimizeButtonHint  # Кнопка свернуть
+        )
+        # Устанавливаем пользовательский интерфейс
         self.setupUi(dialog)
 
         # ПОЛЯ КЛАССА
@@ -32,22 +35,30 @@ class GuiProgram(Ui_Dialog):
         )
 
         # ДЕЙСТВИЯ ПРИ ВКЛЮЧЕНИИ
-        self.pushButton.clicked.connect(self.push)
+        self.button_with_gas.clicked.connect(self.push_with_gas)
+        self.button_without_gas.clicked.connect(self.push_without_gas)
 
-    def push(self):
-        array1 = []
-        array2 = []
-        final_array = []  # список разницы между элементами первого и второго массивов
+    def push_with_gas(self):
         path_file, _ = QFileDialog.getOpenFileName()
+        self.get_data_with_gas(path_file)
+
+    def push_without_gas(self):
+        path_file, _ = QFileDialog.getOpenFileName()
+        self.get_data_with_gas(path_file)
+
+    # ФУНКЦИЯ ПАРСИНГА ДАННЫХ ИЗ ФАЙЛА
+    def get_data_with_gas(self, path_file):
+        frequency_array = []
+        gamma_array = []
         file = open(path_file, "r")
-        text = file.readlines()
+        file.readline()
+        text = file.readline()
+        while "*" not in text:
+            array_num = text.split("\t")
+            frequency = float(array_num[1])
+            gamma = float(array_num[4])
+            frequency_array.append(frequency)
+            gamma_array.append(gamma)
+            text = file.readline()
         file.close()
-        for i in range(len(text)):
-            string = text[i].split()
-            array1.append(float(string[0]))
-            array2.append(float(string[1]))
-        self.drawer_1.draw_two_line(array1, array2)
-        final_array = [abs(array1[i] - array2[i]) for i in range(len(array1))]  # списочное выражение, добавление
-        # элементов в список
-        print(final_array)
-        self.drawer_2.draw_one_line(final_array)  # отрисовка разницы
+        self.drawer_1.draw_one_line_xy(frequency_array, gamma_array)
