@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>788</width>
-    <height>632</height>
+    <width>813</width>
+    <height>606</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,6 +42,16 @@
       <string>Добавить данные без газа</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="button_difference">
+     <property name="text">
+      <string>Отрисовать разницу</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="line_procent"/>
    </item>
    <item>
     <widget class="QWidget" name="widget_plot_1" native="true">

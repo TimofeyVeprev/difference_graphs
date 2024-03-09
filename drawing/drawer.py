@@ -71,6 +71,34 @@ class Drawer(Graph):
 
         # Рисуем график
         self.axis.plot(data_x, data_y)
+        # Отрисовка (вызывается в конце)
+        self.draw_graph()
+
+    def draw_one_line_2xy(self, data_x, data_y, threshold_value) -> None:
+        """ Отрисовка линии.
+        :param data_x: данные x.
+        :param data_y: данные y."""
+        # Очистка, подпись графика и осей (вызывается в начале)
+        self.cleaning_and_chart_graph()
+
+        # Рисуем график
+        self.axis.plot(data_x, data_y)
+        # Рисуем пороговое значение
+        self.axis.plot(data_x, threshold_value)
+
+        # Отрисовка (вызывается в конце)
+        self.draw_graph()
+
+    def draw_one_line_xyy(self, data_x, data_y1, data_y2) -> None:
+        """ Отрисовка линии.
+        :param data_x: данные x.
+        :param data_y: данные y."""
+        # Очистка, подпись графика и осей (вызывается в начале)
+        self.cleaning_and_chart_graph()
+
+        # Рисуем график
+        self.axis.plot(data_x, data_y1)
+        self.axis.plot(data_x, data_y2)
 
         # Отрисовка (вызывается в конце)
         self.draw_graph()

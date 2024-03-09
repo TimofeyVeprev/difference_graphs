@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(788, 632)
+        Dialog.resize(813, 606)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(6)
@@ -25,6 +25,12 @@ class Ui_Dialog(object):
         self.button_without_gas = QtWidgets.QPushButton(Dialog)
         self.button_without_gas.setObjectName("button_without_gas")
         self.verticalLayout.addWidget(self.button_without_gas)
+        self.button_difference = QtWidgets.QPushButton(Dialog)
+        self.button_difference.setObjectName("button_difference")
+        self.verticalLayout.addWidget(self.button_difference)
+        self.line_procent = QtWidgets.QLineEdit(Dialog)
+        self.line_procent.setObjectName("line_procent")
+        self.verticalLayout.addWidget(self.line_procent)
         self.widget_plot_1 = QtWidgets.QWidget(Dialog)
         self.widget_plot_1.setObjectName("widget_plot_1")
         self.layout_plot_1 = QtWidgets.QVBoxLayout(self.widget_plot_1)
@@ -48,3 +54,4 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.button_with_gas.setText(_translate("Dialog", "Добавить данные с газом"))
         self.button_without_gas.setText(_translate("Dialog", "Добавить данные без газа"))
+        self.button_difference.setText(_translate("Dialog", "Отрисовать разницу"))
