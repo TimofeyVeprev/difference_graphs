@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>813</width>
-    <height>606</height>
+    <width>869</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
     <number>6</number>
    </property>
@@ -30,56 +30,106 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QPushButton" name="button_with_gas">
-     <property name="text">
-      <string>Добавить данные с газом</string>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>250</width>
+       <height>16777215</height>
+      </size>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_without_gas">
-     <property name="text">
-      <string>Добавить данные без газа</string>
+     <property name="styleSheet">
+      <string notr="true">background:
+rgb(38, 38, 38)</string>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_difference">
-     <property name="text">
-      <string>Отрисовать разницу</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="line_procent"/>
-   </item>
-   <item>
-    <widget class="QWidget" name="widget_plot_1" native="true">
-     <layout class="QVBoxLayout" name="layout_plot_1">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QPushButton" name="button_without_gas">
+        <property name="styleSheet">
+         <string notr="true">background:
+rgb(255, 170, 0)</string>
+        </property>
+        <property name="text">
+         <string>Без газа</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_difference">
+        <property name="styleSheet">
+         <string notr="true">background:
+rgb(255, 170, 0)</string>
+        </property>
+        <property name="text">
+         <string>Отрисовать разницу</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_with_gas">
+        <property name="styleSheet">
+         <string notr="true">background:
+rgb(255, 170, 0)</string>
+        </property>
+        <property name="text">
+         <string>C газом</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_the_most_high_gamma">
+        <property name="styleSheet">
+         <string notr="true">background:
+rgb(255, 170, 0)</string>
+        </property>
+        <property name="text">
+         <string>Поиск гаммы выше порога</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="line_procent">
+        <property name="styleSheet">
+         <string notr="true">background:
+rgb(255, 255, 255)
+</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="spacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_plot_2" native="true">
-     <layout class="QVBoxLayout" name="layout_plot_2">
-      <property name="spacing">
-       <number>0</number>
-      </property>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:
+rgb(236, 236, 236)</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">
        <number>0</number>
       </property>
@@ -92,6 +142,48 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
+      <item>
+       <widget class="QWidget" name="widget_plot_1" native="true">
+        <layout class="QVBoxLayout" name="layout_plot_1">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_plot_2" native="true">
+        <layout class="QVBoxLayout" name="layout_plot_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
