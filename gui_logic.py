@@ -35,6 +35,7 @@ class GuiProgram(Ui_Dialog):
             widget=self.widget_plot_2
         )
 
+        self.frequency_indexes_above_threshold = []
         self.difference_gamma = []
         self.frequency = []
         self.gamma_with_gas = []
@@ -45,7 +46,7 @@ class GuiProgram(Ui_Dialog):
         self.button_with_gas.clicked.connect(self.push_with_gas)
         self.button_without_gas.clicked.connect(self.push_without_gas)
         self.button_difference.clicked.connect(self.draw_difference_between_file)
-        self.button_the_most_high_gamma.clicked.connect(self.dictionary)
+        self.button_the_most_high_gamma.clicked.connect(self.calculation_frequency_indexes_above_threshold)
 
     def push_with_gas(self):
         """ Функция получения директории файла
@@ -61,7 +62,7 @@ class GuiProgram(Ui_Dialog):
         self.frequency, self.gamma_without_gas = self.get_data_from_file(path_file)
         self.draw_gas()
 
-    def get_data_from_file(self, path_file: str):
+    def get_data_from_file(self, path_file: str) -> [list[float], list[float]]:
         """ Функция получения, парсинг данных из файла """
         frequency_array = []
         gamma_array = []
@@ -106,43 +107,59 @@ class GuiProgram(Ui_Dialog):
                 self.frequency, self.gamma_without_gas
             )
 
-    def draw_difference_between_file(self):
-        """ Расчет разницы данных, нахождение порогового значения, отрисовка результата"""
+    def draw_difference_between_file(self) -> None:
+        """ Функция расчета разницы данных, нахождение порогового значения, отрисовка результата"""
         # Считывание процента из текста
         percent = self.line_procent.text()
-
         # Использования модуля numpy для производительности программы
         gamma_with_gas = np.array(self.gamma_with_gas)
         gamma_without_gas = np.array(self.gamma_without_gas)
-
         # Вычитание, загрузка и отрисовка графика
-        self.difference_gamma = abs(gamma_with_gas - gamma_without_gas)
+        self.difference_gamma = np.array(abs(gamma_with_gas - gamma_without_gas))
         if percent:
             self.threshold_value = max(self.difference_gamma) * (float(percent) / 100)
             self.drawer_2.draw_xy_and_line(
                 self.frequency, self.difference_gamma, self.threshold_value
             )
-
         else:
             self.drawer_2.draw_one_line_xy(self.frequency, self.difference_gamma)
 
-    def dictionary(self):
-        """ Функция нахождения гамм больше порога
-        в массиве относительно разности гамм с газом и без газа"""
-        # Создание словаря и получение данных о частоте и гамме выше порога
-        dict_gamma_with_frequency = {}
-        gamma_the_most = []
-        for i in range(len(self.difference_gamma)):
-            if self.difference_gamma[i] > self.threshold_value:
-                dict_gamma_with_frequency.update({self.frequency[i]: self.difference_gamma[i]})
-                gamma_the_most.append(self.difference_gamma[i])
-        print("Гаммы выше заданного порога:", *gamma_the_most)
-        self.search_absorption_line(dict_gamma_with_frequency)
+    def calculation_frequency_indexes_above_threshold(self) -> None:
+        """ Функция нахождения интервалов индексов частоты, гамма которых выше порога"""
+        self.frequency_indexes_above_threshold.clear()
+        index_interval = []
+        last_index = 0
+        for i in range(1, np.size(self.difference_gamma)):
+            # Если i-тый отсчет оказался больше порога
+            if self.difference_gamma[i] >= self.threshold_value:
+                # Если индекс идут друг за другом, то записываем их в общий промежуток
+                if last_index + 1 == i:
+                    index_interval.append(i)
+                # Иначе сохраняем интервал в общий список и начинаем новый
+                else:
+                    if index_interval:
+                        self.frequency_indexes_above_threshold.append(index_interval)
+                    index_interval = [i]
+                # Сохраняем индекс последнего отсчета
+                last_index = i
+        # Сохраняем результат в класс
+        self.frequency_indexes_above_threshold.append(index_interval)
+        print("Интервалы частот:",self.frequency_indexes_above_threshold,
+              "Частоты линии поглощения:", self.search_absorption_line_frequency(), sep="\n")
 
-    def search_absorption_line(self, dict_gamma_with_frequency: dict):
-        """ Функция нахождения линии поглощения на графике """
-        gamma_max = max(dict_gamma_with_frequency.values())
-        for freq, gammas in dict_gamma_with_frequency.items():
-            if gammas == gamma_max:
-                print("Частота линии поглощения:", freq)
-                break
+    def search_absorption_line_frequency(self) -> list:
+        """ Функция определения частот линии поглощения в интервалах"""
+        medium_freq = []
+        freq = []
+        # Запускаем основной цикл, проходящий по всему массиву
+        for intervals in self.frequency_indexes_above_threshold:
+            # Запускаем цикл, проходящий по подмассивам
+            for elements in range(len(intervals)):
+                # Добавляем частоту в промежуточный список по индексу
+                medium_freq.append(self.frequency[elements])
+            # Находим максимальную частоту в подмассиве и
+            # сохраняем ее в массив частот линии поглощения
+            freq.append(max(medium_freq))
+            # Очищаем промежуточный массив
+            medium_freq.clear()
+        return freq
