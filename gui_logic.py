@@ -108,9 +108,9 @@ class GuiProgram(Ui_Dialog):
             )
 
     def draw_difference_between_file(self) -> None:
-        """ Функция расчета разницы данных, нахождение порогового значения, отрисовка результата"""
+        """ Функция расчета разницы данных, нахождение порогового значения, отрисовка результата """
         # Считывание процента из текста
-        percent = self.line_procent.text()
+        percent = self.line_percent.text()
         # Использования модуля numpy для производительности программы
         gamma_with_gas = np.array(self.gamma_with_gas)
         gamma_without_gas = np.array(self.gamma_without_gas)
@@ -125,7 +125,7 @@ class GuiProgram(Ui_Dialog):
             self.drawer_2.draw_one_line_xy(self.frequency, self.difference_gamma)
 
     def calculation_frequency_indexes_above_threshold(self) -> None:
-        """ Функция нахождения интервалов индексов частоты, гамма которых выше порога"""
+        """ Функция нахождения интервалов индексов частоты, гамма которых выше порога """
         self.frequency_indexes_above_threshold.clear()
         index_interval = []
         last_index = 0
@@ -144,11 +144,14 @@ class GuiProgram(Ui_Dialog):
                 last_index = i
         # Сохраняем результат в класс
         self.frequency_indexes_above_threshold.append(index_interval)
-        print("Интервалы частот:",self.frequency_indexes_above_threshold,
-              "Частоты линии поглощения:", self.search_absorption_line_frequency(), sep="\n")
+        freq_text = ""
+        freq = self.search_absorption_line_frequency()
+        for i in range(len(freq)):
+            freq_text += (str(freq[i]) + " ")
+        self.write_line_absorption.setText(freq_text)
 
     def search_absorption_line_frequency(self) -> list:
-        """ Функция определения частот линии поглощения в интервалах"""
+        """ Функция определения частот линии поглощения в интервалах """
         medium_freq = []
         freq = []
         # Запускаем основной цикл, проходящий по всему массиву
@@ -162,4 +165,5 @@ class GuiProgram(Ui_Dialog):
             freq.append(max(medium_freq))
             # Очищаем промежуточный массив
             medium_freq.clear()
+        # Возвращаем итоговый результат
         return freq

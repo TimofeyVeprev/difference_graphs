@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>869</width>
+    <width>868</width>
     <height>640</height>
    </rect>
   </property>
@@ -33,80 +33,187 @@
     <widget class="QWidget" name="widget_2" native="true">
      <property name="maximumSize">
       <size>
-       <width>250</width>
+       <width>300</width>
        <height>16777215</height>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background:
-rgb(38, 38, 38)</string>
+      <string notr="true">QWidget{
+	background-color: rgb(33, 37, 43);
+	color: rgb(0, 0, 0);	
+	font-size:10pt;
+}
+
+QPushButton {
+	font-size: 10pt;
+	background-color:rgb(255, 172, 28);/* задает цвет фона */
+	display: inline-block;							/* пределяет, будет ли элемент обрабатываться как блочный или встроенный элемент */
+	border: 1px solid rgb(52, 59, 72);		/* задает границу элемента */
+
+	/* задает иконку */
+	background-position: left center;							/* выравнивание иконки */
+	background-repeat: no-repeat;								/* повторять иконку */
+} 
+
+/* срабатывает, когда пользователь наводит на элемент мышью */
+QPushButton:hover {
+	background-color:rgb(255, 182, 79);/* задаем цвет фона */
+	color:rgb(255, 255, 255);
+	border: none;												/* без границ */
+	border-left:4px solid rgb(208, 208, 208);	/* С правой красной раницей */
+}
+
+
+/* срабатывает, при нажатии*/
+QPushButton:pressed      {
+	background-color:rgb(33, 37, 43);		/* задаем цвет фона */
+	color: rgb(255, 255, 255);
+	border: none;												/* без границ */
+}
+QLineEdit{
+	font-size: 10pt;
+	background-color:rgb(220, 220, 220)
+}
+
+QLabel{
+	font-size: 14pt;
+	color: rgb(216, 216, 216)	
+}</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QPushButton" name="button_without_gas">
-        <property name="styleSheet">
-         <string notr="true">background:
-rgb(255, 170, 0)</string>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+          <kerning>false</kerning>
+         </font>
         </property>
         <property name="text">
-         <string>Без газа</string>
+         <string>Детектор</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="button_difference">
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item row="0" column="4">
+         <widget class="QPushButton" name="button_without_gas">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Без газа</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="button_with_gas">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>С газом</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="button_difference">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Разница</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QPushButton" name="button_the_most_high_gamma">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Частота поглощения</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="line_percent">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background:
-rgb(255, 170, 0)</string>
+         <string notr="true"/>
+        </property>
+        <property name="inputMask">
+         <string/>
         </property>
         <property name="text">
-         <string>Отрисовать разницу</string>
+         <string>Число</string>
+        </property>
+        <property name="maxLength">
+         <number>32767</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="placeholderText">
+         <string/>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="button_with_gas">
-        <property name="styleSheet">
-         <string notr="true">background:
-rgb(255, 170, 0)</string>
-        </property>
-        <property name="text">
-         <string>C газом</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="button_the_most_high_gamma">
-        <property name="styleSheet">
-         <string notr="true">background:
-rgb(255, 170, 0)</string>
-        </property>
-        <property name="text">
-         <string>Поиск гаммы выше порога</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="line_procent">
-        <property name="styleSheet">
-         <string notr="true">background:
-rgb(255, 255, 255)
-</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="spacer">
+       <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Minimum</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>20</height>
+          <height>40</height>
          </size>
         </property>
        </spacer>
@@ -140,7 +247,7 @@ rgb(236, 236, 236)</string>
        <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>7</number>
       </property>
       <item>
        <widget class="QWidget" name="widget_plot_1" native="true">
@@ -182,6 +289,22 @@ rgb(236, 236, 236)</string>
           <number>0</number>
          </property>
         </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="write_line_absorption">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Частоты линии поглощения</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
      </layout>
