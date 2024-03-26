@@ -47,6 +47,7 @@ class GuiProgram(Ui_Dialog):
         self.button_without_gas.clicked.connect(self.push_without_gas)
         self.button_difference.clicked.connect(self.draw_difference_between_file)
         self.button_the_most_high_gamma.clicked.connect(self.calculation_frequency_indexes_above_threshold)
+        self.button_indexes.clicked.connect(self.indexes)
 
     def push_with_gas(self):
         """ Функция получения директории файла
@@ -167,3 +168,33 @@ class GuiProgram(Ui_Dialog):
             medium_freq.clear()
         # Возвращаем итоговый результат
         return freq
+
+    def indexes(self):
+        """ Функция отрисовки графиков по заданной частоте """
+        # Получение частоты
+        freq_index1 = float(self.index_1.text())
+        freq_index2 = float(self.index_2.text())
+
+        # Перевод в индексы
+        index1 = self.frequency.index(freq_index1)
+        index2 = self.frequency.index(freq_index2)
+
+        # Срезы по индексам
+        freq_part = self.frequency[index1:index2 + 1]
+        gamma_with_gas_part = self.gamma_with_gas[index1:index2 + 1]
+        gamma_without_gas_part = self.gamma_without_gas[index1:index2 + 1]
+
+        # Очистка прежних массивов по гамме
+        self.gamma_without_gas.clear()
+        self.gamma_with_gas.clear()
+        self.frequency.clear()
+
+        # Обмен данными
+        self.gamma_without_gas = gamma_without_gas_part
+        self.gamma_with_gas = gamma_with_gas_part
+        self.frequency = freq_part
+
+        # Отрисовка графика
+        self.drawer_1.draw_one_line_xyy(
+            self.frequency, self.gamma_with_gas, self.gamma_without_gas
+        )

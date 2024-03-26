@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>868</width>
-    <height>640</height>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,15 +40,16 @@
      <property name="styleSheet">
       <string notr="true">QWidget{
 	background-color: rgb(33, 37, 43);
-	color: rgb(0, 0, 0);	
+	color: rgb(255, 255, 255);	
 	font-size:10pt;
 }
 
 QPushButton {
 	font-size: 10pt;
-	background-color:rgb(255, 172, 28);/* задает цвет фона */
+	background-color:rgb(33, 37, 43);/* задает цвет фона */
 	display: inline-block;							/* пределяет, будет ли элемент обрабатываться как блочный или встроенный элемент */
-	border: 1px solid rgb(52, 59, 72);		/* задает границу элемента */
+	border: 3px solid rgb(255, 195, 44);		/* задает границу элемента */
+	border-radius: 8px;
 
 	/* задает иконку */
 	background-position: left center;							/* выравнивание иконки */
@@ -60,7 +61,7 @@ QPushButton:hover {
 	background-color:rgb(255, 182, 79);/* задаем цвет фона */
 	color:rgb(255, 255, 255);
 	border: none;												/* без границ */
-	border-left:4px solid rgb(208, 208, 208);	/* С правой красной раницей */
+	border-left:3px solidrgb(255, 214, 48); 	/* С правой красной раницей */
 }
 
 
@@ -72,12 +73,14 @@ QPushButton:pressed      {
 }
 QLineEdit{
 	font-size: 10pt;
-	background-color:rgb(220, 220, 220)
+	border-radius: 8px;
+	border: 3px solid rgb(216, 216, 216);	
+	background-color: rgb(33, 37, 43);
 }
 
 QLabel{
 	font-size: 14pt;
-	color: rgb(216, 216, 216)	
+	color: rgb(216, 216, 216);	
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -122,8 +125,8 @@ QLabel{
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="button_with_gas">
+        <item row="1" column="4">
+         <widget class="QPushButton" name="button_the_most_high_gamma">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -136,7 +139,7 @@ QLabel{
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>С газом</string>
+           <string>Частота поглощения</string>
           </property>
          </widget>
         </item>
@@ -158,8 +161,41 @@ QLabel{
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
-         <widget class="QPushButton" name="button_the_most_high_gamma">
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="line_percent">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="text">
+           <string>50</string>
+          </property>
+          <property name="maxLength">
+           <number>32767</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="placeholderText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="button_with_gas">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -172,36 +208,30 @@ QLabel{
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>Частота поглощения</string>
+           <string>С газом</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QLineEdit" name="line_percent">
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="inputMask">
-         <string/>
-        </property>
-        <property name="text">
-         <string>Число</string>
-        </property>
-        <property name="maxLength">
-         <number>32767</number>
-        </property>
+       <widget class="QLineEdit" name="index_1">
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-        <property name="placeholderText">
-         <string/>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="index_2">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_indexes">
+        <property name="text">
+         <string>Вычислить</string>
         </property>
        </widget>
       </item>

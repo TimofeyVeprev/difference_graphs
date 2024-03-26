@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(868, 640)
+        Dialog.resize(868, 572)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(6)
@@ -23,15 +23,16 @@ class Ui_Dialog(object):
         self.widget_2.setMaximumSize(QtCore.QSize(300, 16777215))
         self.widget_2.setStyleSheet("QWidget{\n"
 "    background-color: rgb(33, 37, 43);\n"
-"    color: rgb(0, 0, 0);    \n"
+"    color: rgb(255, 255, 255);    \n"
 "    font-size:10pt;\n"
 "}\n"
 "\n"
 "QPushButton {\n"
 "    font-size: 10pt;\n"
-"    background-color:rgb(255, 172, 28);/* задает цвет фона */\n"
+"    background-color:rgb(33, 37, 43);/* задает цвет фона */\n"
 "    display: inline-block;                            /* пределяет, будет ли элемент обрабатываться как блочный или встроенный элемент */\n"
-"    border: 1px solid rgb(52, 59, 72);        /* задает границу элемента */\n"
+"    border: 3px solid rgb(255, 195, 44);        /* задает границу элемента */\n"
+"    border-radius: 8px;\n"
 "\n"
 "    /* задает иконку */\n"
 "    background-position: left center;                            /* выравнивание иконки */\n"
@@ -43,7 +44,7 @@ class Ui_Dialog(object):
 "    background-color:rgb(255, 182, 79);/* задаем цвет фона */\n"
 "    color:rgb(255, 255, 255);\n"
 "    border: none;                                                /* без границ */\n"
-"    border-left:4px solid rgb(208, 208, 208);    /* С правой красной раницей */\n"
+"    border-left:3px solidrgb(255, 214, 48);     /* С правой красной раницей */\n"
 "}\n"
 "\n"
 "\n"
@@ -55,12 +56,14 @@ class Ui_Dialog(object):
 "}\n"
 "QLineEdit{\n"
 "    font-size: 10pt;\n"
-"    background-color:rgb(220, 220, 220)\n"
+"    border-radius: 8px;\n"
+"    border: 3px solid rgb(216, 216, 216);    \n"
+"    background-color: rgb(33, 37, 43);\n"
 "}\n"
 "\n"
 "QLabel{\n"
 "    font-size: 14pt;\n"
-"    color: rgb(216, 216, 216)    \n"
+"    color: rgb(216, 216, 216);    \n"
 "}")
         self.widget_2.setObjectName("widget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_2)
@@ -88,26 +91,6 @@ class Ui_Dialog(object):
         self.button_without_gas.setStyleSheet("")
         self.button_without_gas.setObjectName("button_without_gas")
         self.gridLayout.addWidget(self.button_without_gas, 0, 4, 1, 1)
-        self.button_with_gas = QtWidgets.QPushButton(self.widget_2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        font.setKerning(False)
-        self.button_with_gas.setFont(font)
-        self.button_with_gas.setStyleSheet("")
-        self.button_with_gas.setObjectName("button_with_gas")
-        self.gridLayout.addWidget(self.button_with_gas, 0, 1, 1, 1)
-        self.button_difference = QtWidgets.QPushButton(self.widget_2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        font.setKerning(False)
-        self.button_difference.setFont(font)
-        self.button_difference.setStyleSheet("")
-        self.button_difference.setObjectName("button_difference")
-        self.gridLayout.addWidget(self.button_difference, 1, 1, 1, 1)
         self.button_the_most_high_gamma = QtWidgets.QPushButton(self.widget_2)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -118,7 +101,16 @@ class Ui_Dialog(object):
         self.button_the_most_high_gamma.setStyleSheet("")
         self.button_the_most_high_gamma.setObjectName("button_the_most_high_gamma")
         self.gridLayout.addWidget(self.button_the_most_high_gamma, 1, 4, 1, 1)
-        self.verticalLayout_2.addLayout(self.gridLayout)
+        self.button_difference = QtWidgets.QPushButton(self.widget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(False)
+        self.button_difference.setFont(font)
+        self.button_difference.setStyleSheet("")
+        self.button_difference.setObjectName("button_difference")
+        self.gridLayout.addWidget(self.button_difference, 1, 1, 1, 1)
         self.line_percent = QtWidgets.QLineEdit(self.widget_2)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -129,7 +121,30 @@ class Ui_Dialog(object):
         self.line_percent.setAlignment(QtCore.Qt.AlignCenter)
         self.line_percent.setPlaceholderText("")
         self.line_percent.setObjectName("line_percent")
-        self.verticalLayout_2.addWidget(self.line_percent)
+        self.gridLayout.addWidget(self.line_percent, 2, 1, 1, 1)
+        self.button_with_gas = QtWidgets.QPushButton(self.widget_2)
+        self.button_with_gas.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(False)
+        self.button_with_gas.setFont(font)
+        self.button_with_gas.setStyleSheet("")
+        self.button_with_gas.setObjectName("button_with_gas")
+        self.gridLayout.addWidget(self.button_with_gas, 0, 1, 1, 1)
+        self.verticalLayout_2.addLayout(self.gridLayout)
+        self.index_1 = QtWidgets.QLineEdit(self.widget_2)
+        self.index_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.index_1.setObjectName("index_1")
+        self.verticalLayout_2.addWidget(self.index_1)
+        self.index_2 = QtWidgets.QLineEdit(self.widget_2)
+        self.index_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.index_2.setObjectName("index_2")
+        self.verticalLayout_2.addWidget(self.index_2)
+        self.button_indexes = QtWidgets.QPushButton(self.widget_2)
+        self.button_indexes.setObjectName("button_indexes")
+        self.verticalLayout_2.addWidget(self.button_indexes)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
         self.horizontalLayout.addWidget(self.widget_2)
@@ -174,8 +189,9 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", "Детектор"))
         self.button_without_gas.setText(_translate("Dialog", "Без газа"))
-        self.button_with_gas.setText(_translate("Dialog", "С газом"))
-        self.button_difference.setText(_translate("Dialog", "Разница"))
         self.button_the_most_high_gamma.setText(_translate("Dialog", "Частота поглощения"))
-        self.line_percent.setText(_translate("Dialog", "Число"))
+        self.button_difference.setText(_translate("Dialog", "Разница"))
+        self.line_percent.setText(_translate("Dialog", "50"))
+        self.button_with_gas.setText(_translate("Dialog", "С газом"))
+        self.button_indexes.setText(_translate("Dialog", "Вычислить"))
         self.write_line_absorption.setText(_translate("Dialog", "Частоты линии поглощения"))
