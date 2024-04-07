@@ -145,6 +145,8 @@ class GuiProgram(Ui_Dialog):
                 last_index = i
         # Сохраняем результат в класс
         self.frequency_indexes_above_threshold.append(index_interval)
+        print(self.frequency_indexes_above_threshold)
+
         freq_text = ""
         freq = self.search_absorption_line_frequency()
         for i in range(len(freq)):
@@ -159,8 +161,10 @@ class GuiProgram(Ui_Dialog):
         for intervals in self.frequency_indexes_above_threshold:
             # Запускаем цикл, проходящий по подмассивам
             for elements in range(len(intervals)):
+                print(intervals[elements])
                 # Добавляем частоту в промежуточный список по индексу
-                medium_freq.append(self.frequency[elements])
+                medium_freq.append(self.frequency[intervals[elements]])
+                print(medium_freq)
             # Находим максимальную частоту в подмассиве и
             # сохраняем ее в массив частот линии поглощения
             freq.append(max(medium_freq))
